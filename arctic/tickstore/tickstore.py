@@ -658,9 +658,9 @@ class TickStore(object):
         elif array.dtype.kind == 'f':
             array = array.astype('<f8')
         elif array.dtype.kind in ('O', 'U', 'S'):
-            if array.dtype.kind == 'O' and infer_dtype(array) not in ['unicode', 'string', 'bytes']:
-                # `string` in python2 and `bytes` in python3
-                raise UnhandledDtypeException("Casting object column to string failed")
+            # if array.dtype.kind == 'O' and infer_dtype(array) not in ['unicode', 'string', 'bytes']:
+            #     # `string` in python2 and `bytes` in python3
+            #     raise UnhandledDtypeException("Casting object column to string failed")
             try:
                 array = array.astype(np.unicode_)
             except (UnicodeDecodeError, SystemError):
